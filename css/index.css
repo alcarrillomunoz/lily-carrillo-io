@@ -1,7 +1,8 @@
+/* desktop-first design elements */
+
 body {
     background-color: #e9d0c6;
     color: black;
-    min-height: 95vh;
 }
 
 h1 {
@@ -13,23 +14,24 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
-    font-size: 80px; 
+    font-size: 5rem; 
     border-bottom: 3px solid black;
-    width: 1400px;
-    letter-spacing: 4px;
+    width: 90%;
+    letter-spacing: .25rem;
     margin: 50px 10px 10px 10px;
 }
 
 .top {
-    width: 99%;
+    width: 100%;
     display: flex; 
 }
 
 .nav {
-    width: 100px; 
-    text-align: right;
+    display: flex;
+    width: 10%; 
     justify-content: flex-end;
-    padding-right: 10px;
+    text-align: right;
+    padding-right: 20px;
     padding-top: 65px;
 }
 
@@ -44,25 +46,30 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 .nav a:hover {
     background-color: rgb(255, 251, 240);
 }
 
+.nav a:focus {
+    background-color: rgb(255, 251, 240);
+}
+
 .mainInfo {
     display: flex; 
-    width: 99%;
+    width: 100%;
 }
 
 #about {
     width: 50%;
-    padding: 0 150px 150px 20px; 
+    padding-left: 20px;
+    padding-right: 70px;
 }
 
 #experience {
-    width: 50%;    
+    width: 50%;   
 }
 
 #jobs {
@@ -78,7 +85,7 @@ h2 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 22px;
+    font-size: 1.5rem;
     margin: 20px 0;
 }
 
@@ -90,11 +97,11 @@ p, li {
 }
 
 li {
-    font-size: 18px;
+   font-size: 1rem;
 }
 
 #about p {
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 ul {  
@@ -107,10 +114,6 @@ ul {
     display: inline;   
 }
 
-li.place {
-    padding-right: 160px;
-}
-
 li.date {
     float: right;
     padding-right: 20px;
@@ -118,9 +121,14 @@ li.date {
 }
 
 .job-description {
-    font-size: 12px;
+    font-size: .75rem;
     padding-right: 200px;
     margin: 1px 0 10px 0; 
+}
+
+footer {
+    margin: 20px 0 0 0; 
+    width: 100%;
 }
 
 #connect {
@@ -130,7 +138,7 @@ li.date {
 
 .contact-icon {
     width: 60px;
-    margin: 30px 25px 0 25px;  
+    margin: 30px 40px 0 40px;  
  }
  
  .contact-icon:hover {
@@ -138,33 +146,177 @@ li.date {
  }
  
 
-/* skills.html css */
 
- #mainSkills {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    padding: 0 0 16px 20px;
+
+
+/* mobile size media query */
+
+ @media (max-width: 480px) {
+    body {
+        margin: 0; 
+        display: flex; 
+        flex-direction: column;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .top {
+        padding: 0; 
+        width: 100%;
+        flex-direction: column;
+        background-color: black;
+        justify-content: center;
+    }
+    #name {
+        color: white;  
+        padding: 30px 0; 
+        margin: 0; 
+        width: 100%;
+        font-size: 4rem;
+        text-align: center;
+        border-bottom: solid white 2px;
+    }
+    .nav {
+        margin: 0; 
+        padding: 20px 0 0 0; 
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        background-color: black;
+    }
+    .nav ul {
+        margin: 0; 
+        display: flex; 
+        padding-bottom: 20px;
+    }
+    .nav a {
+        color: white; 
+        padding: 0 30px;  
+    }
+    .nav a:hover {
+        background-color: rgb(170, 50, 70);
+    }
+    
+    .nav a:focus {
+        background-color: rgb(170, 50, 70);
+    }
+    .mainInfo {
+        flex-direction: column;
+    }
+    #about {
+        width: 100%;
+        margin: 0; 
+        padding: 40px 0 20px 0; 
+    }
+    #about h2 {
+        padding-left: 20px
+    }
+    #about p {
+        padding: 0 30px; 
+    }
+    #experience {
+        width: 100%;
+    }
+    #experience ul {
+        padding: 0 30px; 
+    }
+    .job-description {
+        padding: 0;
+    }
+    .job {
+        display: flex;
+        flex-direction: column;
+    }
+    .job li { 
+        padding: 0;
+        margin: 0;
+    }
+    li.date {
+        display: contents;
+        font-size: .75rem;
+        font-style: italic;
+    }
+    .contact-icon {
+        margin: 30px 20px 0 20px; 
+    }
  }
 
- #skills { 
-    margin: 20px 0;
-    width: 700px;
-    font-size: 22px;
+
+
+
+
+ /* tablet size media query */
+ @media (min-width: 481px) and (max-width: 1020px) {
+    body {
+        margin: 0; 
+    }
+    .top {
+        padding: 0; 
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        justify-content: center;
+    }
+    #name {
+        color: black;  
+        padding: 30px 0; 
+        margin: 0; 
+        width: 100%;
+        font-size: 5rem;
+        text-align: center;
+        border: none;
+    }
+    .nav {
+        margin: 0; 
+        padding-top: 20px; 
+        justify-content: center;
+        flex-direction: row;
+        background-color: black;
+        width: 100%;
+        padding-right: 0; 
+    }
+    .nav ul {
+        margin: 0; 
+        display: flex; 
+        padding-bottom: 20px;
+    }
+    .nav a {
+        color: white; 
+        padding: 0 30px;  
+    }
+    .nav a:hover {
+        background-color: black;
+        border-bottom: solid 3px  rgb(170, 50, 70);
+    }
+    .nav a:focus {
+        background-color: black;
+        border-bottom: solid 3px  rgb(170, 50, 70);
+    }
+    .mainInfo {
+        flex-direction: column;
+    }
+    #about {
+        width: 100%;
+        margin: 0; 
+        padding: 20px 0 0 0; 
+    }
+    #about h2 {
+        padding-left: 20px;
+    }
+    #about p {
+        padding: 0 40px; 
+    }
+    #experience {
+        width: 100%;
+    }
+    #experience h2 {
+        padding-left: 20px; 
+    }
+    #experience ul {
+        padding-right: 40px;
+    }
+    #connect {
+        padding-top: 30px; 
+    }
  }
 
-/* projects.html css */
-
- #projectsMain {
-    display: flex;
-    flex-direction: column;
-    flex: 1; 
-    height: 400px;
-    padding: 0 0 16px 20px;
- }
-
-#projects {    
-    margin: 20px 0;
-    width: 700px;
-    font-size: 22px;
-}
+ 
