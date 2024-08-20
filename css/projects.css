@@ -1,0 +1,15 @@
+
+/* projects.html css */
+
+#projectsMain {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    padding: 0 0 16px 20px;
+ }
+
+#projects {    
+    margin: 20px 0;
+    width: 700px;
+    font-size: 22px;
+}
