@@ -1,3 +1,20 @@
+/* create mobile nav menu */
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navMenu");
+hamburger.addEventListener("click", mobileMenu);
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+/* close nav menu when link is clicked */
+const navItem = document.querySelectorAll(".navItem");
+navItem.forEach(event => event.addEventListener("click", closeMenu));
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
 /* create footer element */
 const footer = document.createElement("footer");
 footer.className = "footer"; 
@@ -93,3 +110,31 @@ messageSection.hidden = true;
 
 /* add event listener to submit button with callback function */
 messageForm.addEventListener("submit", formSubmit);
+
+/* created GET request for github repos */
+fetch("https://api.github.com/users/alcarrillomunoz/repos")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Request failed');
+          }
+        return response.json();
+    })
+    .then(data => {
+        /* create respositories element to store array */ 
+        repositories = [...data];
+
+        /* create project section selector  */
+        const projectSection = document.getElementById("projects"); 
+        const projectList = projectSection.querySelector("ul");
+
+        /* loop through repositories array and add list of repositories to projects section */
+        for (let i = 0; i < repositories.length; i++) {
+            var project = document.createElement("li"); 
+            project.innerText = repositories[i].full_name;
+            projectList.appendChild(project);
+        }
+    })
+    /* catch error and display message if error */ 
+    .catch(error => {
+        console.error('An error occurred:', error);
+    });
