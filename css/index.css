@@ -1,4 +1,7 @@
 /* desktop-first design elements */
+html {
+    scroll-padding-top: 10em;
+}
 
 body {
     background-color: #e9d0c6;
@@ -24,6 +27,9 @@ h1 {
 
 .top {
     width: 100%;
+    position: sticky;
+    top: 0; 
+    background-color: #e9d0c6;
     display: flex; 
 }
 
@@ -33,7 +39,7 @@ h1 {
     justify-content: flex-end;
     text-align: right;
     padding-right: 20px;
-    padding-top: 65px;
+    padding-top: 55px;
 }
 
 .nav ul {
@@ -47,7 +53,7 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .nav a:hover {
@@ -58,7 +64,21 @@ h1 {
     background-color: rgb(255, 251, 240);
 }
 
-.mainInfo {
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.aboutInfo {
     display: flex; 
     width: 100%;
 }
@@ -126,8 +146,34 @@ li.date {
     margin: 1px 0 10px 0; 
 }
 
+.skillsAndProjects {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+#skills {
+    width: 50%;
+    padding-right: 70px;
+}
 #skills h2 {
     padding-left: 20px; 
+}
+
+#skills ul {
+    padding-left: 30px;
+}
+
+#projects {
+    width: 50%;
+}
+
+#projects h2 {
+    padding-left: 30px;
+}
+
+#projects ul {
+    padding-left: 50px; 
 }
 
 #leave_message_section h2 {
@@ -253,6 +299,9 @@ footer {
 /* mobile size media query */
 
  @media (max-width: 480px) {
+    html {
+        scroll-padding-top: 18em;
+    }
     body {
         margin: 0; 
         display: flex; 
@@ -277,36 +326,51 @@ footer {
         border-bottom: solid white 2px;
     }
     .nav {
+        display: block;
+        text-align: center;
         margin: 0; 
-        padding: 1em 0 0 0; 
-        justify-content: center;
-        flex-direction: row;
+        padding: 0; 
         width: 100%;
-        background-color: black;
     }
     .nav ul {
-        margin: 0; 
-        display: flex; 
-        padding-bottom: 20px;
+        background-color: white;
+        border-bottom: black solid 2px;
+        width: 100%;
+        padding-top: 2em;
+        position: fixed;
+        left: -100%;
+        flex-direction: column;
     }
     .nav a {
-        color: white; 
-        padding: 0 .5em;  
+        font-size: 1.5em;
+        color: black; 
+        padding: 0;  
     }
-    .nav a:hover {
-        background-color: rgb(170, 50, 70);
+    .navMenu.active {
+        left: 0;
     }
-    
-    .nav a:focus {
-        background-color: rgb(170, 50, 70);
+    .hamburger {
+        padding: 5px;
+        background-color: white;
+        display: block;
+        cursor: pointer;
     }
-    .mainInfo {
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .aboutInfo {
         flex-direction: column;
     }
     #about {
         width: 100%;
         margin: 0; 
-        padding: 40px 0 20px 0; 
+        padding: 20px 0 0 0; 
     }
     #about h2 {
         padding-left: 20px
@@ -336,14 +400,39 @@ footer {
         font-size: .75rem;
         font-style: italic;
     }
-    #skills ul {
+    .skillsAndProjects {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    #skills,
+    #projects {
+        margin: 20px 0;
+        width: 100%;
+        padding: 0;
+    }
+    #skills h2 {
+        margin: 0;
+    }
+    #skills ul,
+    #projects ul {
+        margin-top: 20px;
+    }
+    #projects h2 {
+        margin: 0;
+        padding-left: 20px;
+    }
+    #projects ul {
         padding-left: 30px; 
+    }
+    #leave_message_section h2 {
+        margin-top: 10px;
     }
     input,
     textarea{
+        display: block;
         width: 70%;
-        margin-left: 3em;
-        
+        margin-left: 3em;  
     }
     .submitButtonSection {
         display: flex;
@@ -367,6 +456,9 @@ footer {
 
  /* tablet size media query */
  @media (min-width: 481px) and (max-width: 1020px) {
+    html {
+        scroll-padding-top: 20em;
+    }
     body {
         margin: 0; 
     }
@@ -406,13 +498,13 @@ footer {
     }
     .nav a:hover {
         background-color: black;
-        border-bottom: solid 3px  rgb(170, 50, 70);
+        border-bottom: solid white 2px;
     }
     .nav a:focus {
         background-color: black;
-        border-bottom: solid 3px  rgb(170, 50, 70);
+        border-bottom: solid 2px #e9d0c6;
     }
-    .mainInfo {
+    .aboutInfo {
         flex-direction: column;
     }
     #about {
@@ -434,6 +526,23 @@ footer {
     }
     #experience ul {
         padding-right: 40px;
+    }
+    #skills {
+        width: 50%;
+        padding-right: 0;
+    }
+    #projects {
+        width: 50%;
+    }   
+    #projects h2 {
+        padding: 0;
+        padding-left: 10px;
+    }
+    #skills ul {
+        padding-left: 30px; 
+    }
+    #projects ul {
+        padding-left: 30px; 
     }
     input,
     textarea{

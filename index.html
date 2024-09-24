@@ -16,15 +16,21 @@
         <h1 id="name">Lily Carrillo</h1>
 
         <nav class="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="../subpages/skills.html">Skills</a></li>
-                <li><a href="../subpages/projects.html">Projects</a></li>
+            <ul class="navMenu">
+                <li><a href="#about" class="navItem">About</a></li>
+                <li><a href="#skills" class="navItem">Skills</a></li>
+                <li><a href="#projects" class="navItem">Projects</a></li>
+                <li><a href="#connect" class="navItem">Connect</a></li>
             </ul>
+            <section class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </section>
         </nav>
     </section>
 
-    <section class="mainInfo">
+    <section class="aboutInfo">
         <section id="about">
             <h2>About</h2>
                 <p>My name is Lily, and I enjoy learning about programming! I am learning to code so I can start a new career that I enjoy and will help me continue to grow.</p>
@@ -60,10 +66,18 @@
             </section>
         </section>
     </section>
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-        </ul>
+    <section class="skillsAndProjects">
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+            </ul>
+        </section>
     </section>
 
     <section id="leave_message_section">
@@ -79,8 +93,9 @@
                 <button type="submit" class="button" name="submitButton">Submit</button>
             </section>
         </form>
-    </section>
 
+    </section>
+    
     <section id="messages">
         <h2>Messages</h2>
         <section class="messages-display">
