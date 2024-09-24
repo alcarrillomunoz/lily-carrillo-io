@@ -21,16 +21,16 @@ footer.className = "footer";
 document.body.appendChild(footer); 
 
 /* create date variable to get current year */
-var today = new Date(); 
-var thisYear = today.getFullYear(); 
+let today = new Date(); 
+let thisYear = today.getFullYear(); 
 
 /* select footer element */
-var newFooter = document.querySelector("footer");
+let newFooter = document.querySelector("footer");
 
 /* create copyright element and text line */
-var copyright = document.createElement("p"); 
+let copyright = document.createElement("p"); 
 const copyrightSymbol = '\u00A9';
-var copyrightText = copyrightSymbol + "Lily Carrillo " + thisYear; 
+let copyrightText = copyrightSymbol + "Lily Carrillo " + thisYear; 
 copyright.innerHTML = copyrightText;
 
 /* append copyright text to footer element */ 
@@ -38,11 +38,11 @@ newFooter.appendChild(copyright);
 
 /* create skills array list and append to skills section */
 const skills = ["JavaScript", "HTML", "CSS", "GitHub"];
-var skillsSection = document.getElementById("skills");
-var skillsList = skillsSection.querySelector("ul");
+let skillsSection = document.getElementById("skills");
+let skillsList = skillsSection.querySelector("ul");
 
 for (let i = 0; i < skills.length; i++) {
-    var skill = document.createElement("li"); 
+    let skill = document.createElement("li"); 
     skill.innerText = skills[i];
     skillsList.appendChild(skill);
 }
@@ -80,11 +80,11 @@ function formSubmit(event) {
 
     /*create new li element with message information when message is submitted */ 
     const newMessage = document.createElement("li");
-    var messageString = `<a href="mailto:${email}">${userName}</a> message: <span>${message}</span>`;
+    let messageString = `<a href="mailto:${email}">${userName}</a> message: <span>${message}</span>`;
     newMessage.innerHTML = messageString;
 
     /* create remove button */
-    var removeButton = document.createElement("button");
+    let removeButton = document.createElement("button");
     removeButton.innerHTML = "Remove";
     removeButton.setAttribute("type", "button");
     removeButton.setAttribute("id", "removeButtonID");
@@ -101,8 +101,8 @@ function formSubmit(event) {
 }
 
 /* select leave_message section */
-var messageForms = document.getElementsByName("leave_message"); 
-var messageForm = messageForms[0];
+let messageForms = document.getElementsByName("leave_message"); 
+let messageForm = messageForms[0];
 
 /* select messages section and hide messages section by default */
 const messageSection = document.getElementById("messages");
@@ -122,16 +122,22 @@ fetch("https://api.github.com/users/alcarrillomunoz/repos")
     .then(data => {
         /* create respositories element to store array */ 
         repositories = [...data];
-
+        console.log(repositories);
         /* create project section selector  */
         const projectSection = document.getElementById("projects"); 
         const projectList = projectSection.querySelector("ul");
 
         /* loop through repositories array and add list of repositories to projects section */
         for (let i = 0; i < repositories.length; i++) {
-            var project = document.createElement("li"); 
-            project.innerText = repositories[i].full_name;
+            let project = document.createElement("li"); 
+            /* create clickable links for each respository that opens to github repo page in new tab */ 
+            let projectLink = document.createElement("a");
+            projectLink.className = "projectLink";
+            projectLink.href = repositories[i].html_url;
+            projectLink.innerText = repositories[i].full_name;
+            projectLink.target = "_blank";
             projectList.appendChild(project);
+            projectList.appendChild(projectLink);
         }
     })
     /* catch error and display message if error */ 
