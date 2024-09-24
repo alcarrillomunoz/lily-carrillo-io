@@ -122,7 +122,7 @@ fetch("https://api.github.com/users/alcarrillomunoz/repos")
     .then(data => {
         /* create respositories element to store array */ 
         repositories = [...data];
-        console.log(repositories);
+        // console.log(repositories);
         /* create project section selector  */
         const projectSection = document.getElementById("projects"); 
         const projectList = projectSection.querySelector("ul");
